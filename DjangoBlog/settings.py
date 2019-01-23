@@ -83,7 +83,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'blog.context_processors.seo_processor'
+                'blog.context_processors.seo_processor',
+                'django.template.context_processors.static'
             ],
         },
     },
@@ -107,15 +108,27 @@ WSGI_APPLICATION = 'DjangoBlog.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'djangoblog',
+#         'USER': 'root',
+#         'PASSWORD': 'dellzhui',
+#         'HOST': '172.17.0.2',
+#         'PORT': 3306,
+#         'OPTIONS': {'charset': 'utf8mb4'},
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangoblog',
-        'USER': 'root',
-        'PASSWORD': 'dellzhui',
-        'HOST': '172.17.0.2',
-        'PORT': 3306,
-        'OPTIONS': {'charset': 'utf8mb4'},
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'djangoblog',
+    'USER': os.environ.get('DJANGO_MYSQL_USER'),
+    'PASSWORD': os.environ.get('DJANGO_MYSQL_PASSWORD'),
+    'HOST': os.environ.get('DJANGO_MYSQL_HOST'),
+    'PORT': '3306',
+    'OPTIONS': {'charset': 'utf8mb4'},
     }
 }
 
@@ -157,7 +170,8 @@ USE_TZ = True
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'DjangoBlog.whoosh_cn_backend.WhooshEngine',
-        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+        #'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+        'PATH': '/tmp/whoosh_index',
     },
 }
 # 自动更新搜索索引
@@ -169,6 +183,7 @@ STATIC_ROOT = os.path.join(SITE_ROOT, 'collectedstatic')
 
 STATIC_URL = '/static/'
 STATICFILES = os.path.join(BASE_DIR, 'static')
+STATIC_FC_URL = STATIC_URL
 
 AUTH_USER_MODEL = 'accounts.BlogUser'
 LOGIN_URL = '/login/'
@@ -220,62 +235,62 @@ ADMINS = [('liangliang', 'liangliangyy@gmail.com')]
 # 微信管理员密码(两次md5获得)
 WXADMIN = '995F03AC401D6CABABAEF756FC4D43C7'
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'root': {
-        'level': 'INFO',
-        'handlers': ['console', 'log_file'],
-    },
-    'formatters': {
-        'verbose': {
-            'format': '[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d %(module)s] %(message)s',
-        }
-    },
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse',
-        },
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
-        },
-    },
-    'handlers': {
-        'log_file': {
-            'level': 'INFO',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': 'djangoblog.log',
-            'maxBytes': 16777216,  # 16 MB
-            'formatter': 'verbose'
-        },
-        'console': {
-            'level': 'DEBUG',
-            'filters': ['require_debug_true'],
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        },
-        'null': {
-            'class': 'logging.NullHandler',
-        },
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
-    },
-    'loggers': {
-        'djangoblog': {
-            'handlers': ['log_file', 'console'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': False,
-        }
-    }
-}
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'root': {
+#         'level': 'INFO',
+#         'handlers': ['console', 'log_file'],
+#     },
+#     'formatters': {
+#         'verbose': {
+#             'format': '[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d %(module)s] %(message)s',
+#         }
+#     },
+#     'filters': {
+#         'require_debug_false': {
+#             '()': 'django.utils.log.RequireDebugFalse',
+#         },
+#         'require_debug_true': {
+#             '()': 'django.utils.log.RequireDebugTrue',
+#         },
+#     },
+#     'handlers': {
+#         'log_file': {
+#             'level': 'INFO',
+#             'class': 'logging.handlers.RotatingFileHandler',
+#             'filename': 'djangoblog.log',
+#             'maxBytes': 16777216,  # 16 MB
+#             'formatter': 'verbose'
+#         },
+#         'console': {
+#             'level': 'DEBUG',
+#             'filters': ['require_debug_true'],
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'verbose'
+#         },
+#         'null': {
+#             'class': 'logging.NullHandler',
+#         },
+#         'mail_admins': {
+#             'level': 'ERROR',
+#             'filters': ['require_debug_false'],
+#             'class': 'django.utils.log.AdminEmailHandler'
+#         }
+#     },
+#     'loggers': {
+#         'djangoblog': {
+#             'handlers': ['log_file', 'console'],
+#             'level': 'INFO',
+#             'propagate': True,
+#         },
+#         'django.request': {
+#             'handlers': ['mail_admins'],
+#             'level': 'ERROR',
+#             'propagate': False,
+#         }
+#     }
+# }
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

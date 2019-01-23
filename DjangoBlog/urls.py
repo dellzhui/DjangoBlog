@@ -23,6 +23,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 from DjangoBlog.admin_site import admin_site
 
+from django.conf.urls.static import static  
+from django.conf import settings 
+
 sitemaps = {
 
     'blog': ArticleSiteMap,
@@ -49,3 +52,5 @@ urlpatterns = [
                   url(r'', include('servermanager.urls', namespace='servermanager')),
                   url(r'', include('owntracks.urls', namespace='owntracks'))
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns += static(settings.STATIC_FC_URL, document_root=settings.STATIC_ROOT)

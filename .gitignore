@@ -76,3 +76,6 @@ werobot_session
 django.jpg
 uploads/
 settings_production.py
+.env
+template.yml
+env.sh
