@@ -95,13 +95,25 @@ WSGI_APPLICATION = 'DjangoBlog.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'djangoblog',
+#         'USER': os.environ.get('DJANGO_MYSQL_USER'),
+#         'PASSWORD': os.environ.get('DJANGO_MYSQL_PASSWORD'),
+#         'HOST': os.environ.get('DJANGO_MYSQL_HOST'),
+#         'PORT': 3306,
+#         'OPTIONS': {'charset': 'utf8mb4'},
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'djangoblog',
-        'USER': os.environ.get('DJANGO_MYSQL_USER'),
-        'PASSWORD': os.environ.get('DJANGO_MYSQL_PASSWORD'),
-        'HOST': os.environ.get('DJANGO_MYSQL_HOST'),
+        'USER': 'root',
+        'PASSWORD': 'dellzhui',
+        'HOST': '172.17.0.2',
         'PORT': 3306,
         'OPTIONS': {'charset': 'utf8mb4'},
     }
