@@ -35,9 +35,9 @@ else:
     import os
     from django.conf import settings
 
-    if os.path.exists(os.path.join(settings.BASE_DIR, 'werobot_session')):
-        os.remove(os.path.join(settings.BASE_DIR, 'werobot_session'))
-    robot.config['SESSION_STORAGE'] = FileStorage(filename='werobot_session')
+    if os.path.exists(os.path.join('/tmp', 'werobot_session')):
+        os.remove(os.path.join('/tmp', 'werobot_session'))
+    robot.config['SESSION_STORAGE'] = FileStorage(filename='/tmp/werobot_session')
 blogapi = BlogApi()
 tuling = TuLing()
 

@@ -24,6 +24,7 @@ def handler(environ, start_response):
     if not base_path:
         base_path = "/".join(li[0:5])
         settings.STATIC_URL = base_path + settings.STATIC_FC_URL
+        settings.COMPRESS_URL = base_path + settings.STATIC_FC_URL
 
     context = environ['fc.context']
     environ['HTTP_HOST'] = '{}.{}.fc.aliyuncs.com'.format(context.account_id, context.region)

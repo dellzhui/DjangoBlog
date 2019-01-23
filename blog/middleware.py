@@ -16,6 +16,7 @@
 import time
 from ipware.ip import get_real_ip
 from DjangoBlog.utils import cache
+import django
 
 
 class OnlineMiddleware(object):
@@ -31,5 +32,6 @@ class OnlineMiddleware(object):
             return response
 
         cast_time = time.time() - start_time
-        response.content = response.content.replace(b'<!!LOAD_TIMES!!>', str.encode(str(cast_time)[:5]))
+        if(type(response) != django.http.response.FileResponse):
+            response.content = response.content.replace(b'<!!LOAD_TIMES!!>', str.encode(str(cast_time)[:5]))
         return response
