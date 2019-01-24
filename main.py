@@ -16,6 +16,9 @@ from django.conf import settings
 
 base_path = None
 
+def initializer(context):
+    pass
+
 def handler(environ, start_response):
     request_uri = environ['fc.request_uri']
     parsed_tuple = urlparse(request_uri)
