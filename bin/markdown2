@@ -1,4 +1,4 @@
-#!/home/work/opensource/Python-3.7.2/out/bin/python3.7
+#!/usr/local/virtualenvs/venv_devopspy/bin/python3.6
 
 import sys
 from os.path import join, dirname, exists

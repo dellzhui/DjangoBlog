@@ -27,7 +27,7 @@ class Command(BaseCommand):
     requires_system_checks = False
     stealth_options = ('shutdown_message',)
 
-    default_addr = '192.168.229.206'
+    default_addr = '0.0.0.0'
     default_addr_ipv6 = '::1'
     default_port = '8000'
     protocol = 'http'

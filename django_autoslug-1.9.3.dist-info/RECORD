@@ -1,9 +1,9 @@
 autoslug/__init__.py,sha256=3b5AWsZyBu3bWwHf1_LrSd7dn2sTtb8UJ1ZMbCdMAJM,409
-autoslug/__pycache__/__init__.cpython-37.pyc,,
-autoslug/__pycache__/fields.cpython-37.pyc,,
-autoslug/__pycache__/models.cpython-37.pyc,,
-autoslug/__pycache__/settings.cpython-37.pyc,,
-autoslug/__pycache__/utils.cpython-37.pyc,,
+autoslug/__pycache__/__init__.cpython-36.pyc,,
+autoslug/__pycache__/fields.cpython-36.pyc,,
+autoslug/__pycache__/models.cpython-36.pyc,,
+autoslug/__pycache__/settings.cpython-36.pyc,,
+autoslug/__pycache__/utils.cpython-36.pyc,,
 autoslug/fields.py,sha256=-2XHsby5-l2InN8RC629M_rP7TLBlIVVY6suS78im3c,12923
 autoslug/models.py,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
 autoslug/settings.py,sha256=o7ZywKScIkQ7lSt1QCVg3m3aEmPfdH8ezx3ZL-jImPM,2476

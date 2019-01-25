@@ -81,8 +81,8 @@ class Compressor(object):
             base_url = settings.COMPRESS_URL
         if not url.startswith(base_url):
             raise UncompressableFileError("'%s' isn't accessible via "
-                                          "COMPRESS_URL ('1%s''2%s' '3%s''4%s') and can't be "
-                                          "compressed!" % (url, self.storage.base_url, settings.COMPRESS_URL, base_url, settings.STATIC_URL))
+                                          "COMPRESS_URL ('%s') and can't be "
+                                          "compressed" % (url, base_url))
         basename = url.replace(base_url, "", 1)
         # drop the querystring, which is used for non-compressed cache-busting.
         return basename.split("?", 1)[0]
