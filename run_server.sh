@@ -19,6 +19,7 @@ run_server()
     ./manage.py runserver
 }
 
+cd `dirname $0`
 init_env
 [ "x$1" = "xinit" ] && init_server
 run_server
