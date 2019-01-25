@@ -115,7 +115,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': 'dellzhui',
         'HOST': '172.17.0.1',
-        'PORT': 33060,
+        'PORT': 33060 + os.getuid() % 1000,
         'OPTIONS': {'charset': 'utf8mb4'},
     }
 }
